@@ -15,6 +15,10 @@ The repository contains two types of models,
 
 Most of the script models include English training data as well as the script, but not **Cyrillic**, as that would have a major ambiguity problem. 
 
+On Linux, the language based traineddata packages are named `tesseract-ocr-LANG` where LANG is the three letter language code eg. tesseract-ocr-eng (English language), tesseract-ocr-hin (Hindi language), etc. 
+
+On Linux, the script based traineddata packages are named `tesseract-ocr-script-SCRIPT` where SCRIPT is the four letter script code eg. tesseract-ocr-script-latn (Latin Script), tesseract-ocr-script-deva (Devanagari Script), etc. 
+
 ### Data files for a particular script
 
 Initial capitals in the filename indicate the one model for all languages in that script. 
@@ -43,6 +47,8 @@ With a theory that poor accuracy on test data and over-fitting on training data 
 **'jpn_vert'** is trained on text rendered vertically (but the image is rotated so the long edge is still horizontal).
 
 'jpn' loads 'jpn_vert' as a secondary language so it can try it in case the text is rendered vertically. This seems to work most of the time as a reasonable solution.
+
+--------------------------------
 
 See the [Tesseract wiki](https://github.com/tesseract-ocr/tesseract/wiki/Data-Files) for additional information.
 
