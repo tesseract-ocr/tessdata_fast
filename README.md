@@ -1,35 +1,50 @@
 # tessdata_fast – Fast integer versions of trained models
 
-This repository contains fast integer versions of trained models for the
-[Tesseract Open Source OCR Engine](https://github.com/tesseract-ocr/tesseract).
+This repository contains fast integer versions of trained models for the [Tesseract Open Source OCR Engine](https://github.com/tesseract-ocr/tesseract).
 
-Most users will want to use these traineddata files and this is what is planned to be shipped as part of Linux distributions. Fine tuning/incremental training will **NOT** be possible from these `fast`    models, as they are 8-bit integer. It will be possible to convert a tuned    `best` to integer to make it faster, but some of the speed in `fast` will be   from the smaller model.
+- Most users will want to use these traineddata files to do OCR and  these will be shipped as part of Linux distributions. 
+- Fine tuning/incremental training will **NOT** be possible from these `fast`    models, as they are 8-bit integer. 
+- It will be possible to convert a tuned    `best`  to integer to make it faster, but some of the speed in `fast` will be   from the smaller model.
+- When using the models in this repository, only the new LSTM-based OCR engine is supported. The legacy `tesseract` engine is not supported with these files, so Tesseract's oem modes '0' and '2' won't work with them.
 
-When using the models in this repository, only the new LSTM-based OCR engine is supported. The legacy `tesseract` engine is not supported with these files, so Tesseract's oem modes '0' and '2' won't work with them.
+## Two types of models
 
-Initial capitals indicate the one model for all languages in that script. 
+The repository contains two types of models,
+- those for a single language and
+- those for a single script supporting one or more languages.
 
-**Latin** is all latin-based languages, 
-except vie, which has its own **Vietnamese**.
+Most of the script models include English training data as well as the script, but not **Cyrillic**, as that would have a major ambiguity problem. 
 
-**Devanagari** is hin+san+mar+nep+eng
+### Data files for a particular script
 
-**Fraktur** is basically a combination of all the latin-based languages that have an 'old' variant.
+Initial capitals in the filename indicate the one model for all languages in that script. 
 
-Most of the script models include English training data as well as the script, but not for **Cyrillic**, as that would have a major ambiguity problem. 
+- **Latin** is all latin-based languages, except vie.
+- **Vietnamese** is for latin-based Vietnamese language.
+- **Fraktur** is basically a combination of all the latin-based languages that have an 'old' variant.
+- **Devanagari** is for hin+san+mar+nep+eng.
 
-For Latin-based languages, the existing model data provided has been trained on about 400000 textlines spanning about 4500 fonts. For other scripts, not so many fonts are available, but they have still been trained on a similar number of textlines.
+### LSTM training details for different languages and scripts
 
-For Latin, I have ~4500 fonts to train with. For Devanagari ~50, and for Kannada 15. With a theory that poor accuracy on test data and over-fitting on training data was caused by the lack of fonts, I tried mixing the training data with English, thinking that English is often mixed in anyway, and some of the font diversity might generalize to the other script. The overall effect was slightly positive, so I left it that way.
+For Latin-based languages, the existing model data provided has been trained on about 400000 textlines spanning about 4500 fonts. For other scripts, not so many fonts are available, but they have still been trained on a similar number of textlines.  eg.
 
-'jpn' contains whatever appears on the www that is labelled as the language, trained only with fonts that can render Japanese. As with most of the other Script traineddatas, **Japanese** contains all the languages that use that script (in this case just the one) PLUS English.The resulting model is trained with a mix of both training sets, with the expectation that some of the generalization to 4500 English training fonts will also apply to the other script that has a lot less.
+- Latin ~4500 fonts 
+- Devanagari ~50 fonts
+- Kannada 15.
 
-'jpn_vert' is trained on text rendered vertically (but the image is rotated so the long edge is still horizontal).
+With a theory that poor accuracy on test data and over-fitting on training data was caused by the lack of fonts, the training data has been mixed with English, so that some of the font diversity might generalize to the other script. The overall effect was slightly positive, hence the script models include English language also.
+
+### Example - jpn and  Japanese
+
+**'jpn'** contains whatever appears on the www that is labelled as the language, trained only with fonts that can render Japanese. 
+
+**Japanese** contains all the languages that use that script (in this case just the one) PLUS English.The resulting model is trained with a mix of both training sets, with the expectation that some of the generalization to 4500 English training fonts will also apply to the other script that has a lot less.
+
+**'jpn_vert'** is trained on text rendered vertically (but the image is rotated so the long edge is still horizontal).
 
 'jpn' loads 'jpn_vert' as a secondary language so it can try it in case the text is rendered vertically. This seems to work most of the time as a reasonable solution.
 
-See the [Tesseract wiki](https://github.com/tesseract-ocr/tesseract/wiki/Data-Files)
-for additional information.
+See the [Tesseract wiki](https://github.com/tesseract-ocr/tesseract/wiki/Data-Files) for additional information.
 
 All data in the repository are licensed under the
 Apache-2.0 License, see file [COPYING](COPYING).
