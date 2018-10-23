@@ -2,11 +2,13 @@
 
 This repository contains fast integer versions of trained models for the [Tesseract Open Source OCR Engine](https://github.com/tesseract-ocr/tesseract).
 
+These models only work with the LSTM OCR engine of Tesseract 4.
+
 - These are a speed/accuracy compromise as to what offered the best "value for money" in speed vs accuracy. 
 - For some languages, this is still best, but for most not. 
 - The "best value for money" network configuration was then integerized for further speed.
 - Most users will want to use these traineddata files to do OCR and these will be shipped as part of Linux distributions eg. Ubuntu 18.04.
-- Fine tuning/incremental training will **NOT** be possible from these `fast`    models, as they are 8-bit integer. 
+- Fine tuning/incremental training will **NOT** be possible from these `fast` models, as they are 8-bit integer. 
 - When using the models in this repository, only the new LSTM-based OCR engine is supported. The legacy `tesseract` engine is not supported with these files, so Tesseract's oem modes '0' and '2' won't work with them.
 
 ## Two types of models
