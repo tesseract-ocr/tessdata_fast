@@ -50,7 +50,7 @@ With a theory that poor accuracy on test data and over-fitting on training data 
 
 --------------------------------
 
-See the [Tesseract wiki](https://github.com/tesseract-ocr/tesseract/wiki/Data-Files) for additional information.
+See the [Tesseract documentation](https://tesseract-ocr.github.io/tessdoc/Data-Files) for additional information.
 
 All data in the repository are licensed under the
 Apache-2.0 License, see file [LICENSE](LICENSE).
