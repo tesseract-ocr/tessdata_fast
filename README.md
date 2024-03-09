@@ -11,6 +11,13 @@ These models only work with the LSTM OCR engine of Tesseract 4.
 - Fine tuning/incremental training will **NOT** be possible from these `fast` models, as they are 8-bit integer. 
 - When using the models in this repository, only the new LSTM-based OCR engine is supported. The legacy `tesseract` engine is not supported with these files, so Tesseract's oem modes '0' and '2' won't work with them.
 
+## Deprecated models
+
+The former model `frk` has been renamed to `deu_latf` because the old name was never ISO compliant.
+A symbolic link from deu_latf.traineddata to frk.traineddata may help to migrate from the old name to the new one.
+However, all projects and distributions are encouraged to use only the new name.
+The use of `frk` is deprecated and will not be supported in the future.
+
 ## Two types of models
 
 The repository contains two types of models,
