@@ -2,7 +2,7 @@
 
 This repository contains fast integer versions of trained models for the [Tesseract Open Source OCR Engine](https://github.com/tesseract-ocr/tesseract).
 
-These models only work with the LSTM OCR engine of Tesseract 4.
+These models only work with the LSTM OCR engine of Tesseract 4 and 5.
 
 - These are a speed/accuracy compromise as to what offered the best "value for money" in speed vs accuracy. 
 - For some languages, this is still best, but for most not. 
